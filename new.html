@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Student</title>
+</head>
+<body>
+    <h3>Students Addition</h3>
+    {% print "Student details" %}
+    <hr/>
+
+    {% for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-danger">
+            {{ message}}
+        </div>
+    {% endfor %}
+
+    <form action="{{ request.path}}" method = "post">
+        <label for="name">Name</label><br>
+        <input type="text" name = "name" placeholder="name" value="{{student.name}}"/><br>
+        <label for="maths">Maths</label><br>
+        <input type="text" name="maths" placeholder="maths" value="{{student.maths}}"/><br
+        <label for="eng">Eng</label><br>
+        <input type="text" name="eng" placeholder="eng" value="{{student.eng}}"/><br>
+        <label for="sci">Sci</label><br>
+        <input type="text" name="sci" placeholder="sci" value="{{student.sci}}"/><br>
+        <label for="position">Position</label><br>
+        <input type="text" name="position" placeholder="position" value="{{student.position}}"/><br>
+        <br>
+        <br>
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/static/index.css" rel="stylesheet"/>
+    
+</head>
+<body>
+    <h2>
+        <a>PERFORMANCE ANALYSIS TOOL</a>
+    </h2>
+
+    <hr/>
+      
+    
+    <h4>
+        Students & Their marks (<a href = "{{ url_for('new') }}">Add Student</a>)
+    </h4>
+
+    <table>
+        <thead>
+           <tr>
+              <th>Name</th>
+              <th>Maths</th>
+              <th>Eng</th>
+              <th>Sci</th> 
+              <th>Total</th>
+              <th>Mean</th>
+              <th>Position</th>
+              <th>Edit</th>
+           </tr>
+        </thead>
+        
+        <tbody>
+           {% for student in students %}
+              <tr>
+                 <td>{{ student.name }}</td>
+                 <td>{{ student.maths }}</td>
+                 <td>{{ student.eng }}</td>
+                 <td>{{ student.sci }}</td> 
+                 <td>{{ student.total() }}</td>
+                 <td>{{"{:,.0f}".format (student.mean()) }}</td>
+                 <td>{{ student.position }}</td>
+                 <td><a href="/edit/{{ student.id }}">edit</a></td>
+              </tr>
+           {% endfor %}
+        </tbody>
+     </table>
+    
+</body>
+</html>
