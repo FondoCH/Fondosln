@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Sorting Rows in HTML Table by Totals</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Item 1</td>
+        <td>3</td>
+        <td>10</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Item 2</td>
+        <td>2</td>
+        <td>15</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Item 3</td>
+        <td>5</td>
+        <td>8</td>
+        <td>40</td>
+      </tr>
+      <tr>
+      	<td>Item 4</td>
+        <td>2</td>
+        <td>9</td>
+        <td>18</td>
+      </tr>
+      <tr>
+      	<td>Item 5</td>
+        <td>4</td>
+        <td>9</td>
+        <td>36</td>
+      </tr>
+      <tr>
+      	<td>Item 6</td>
+        <td>13</td>
+        <td>3</td>
+        <td>39</td>
+      </tr>
+
+
+    </tbody>
+  </table>
+  <br>
+  <a href="https://mail.google.com/mail/u/0/#inbox" target=_blank>Inbox</a>
+
+
+  <script>
+    function sortTable() {
+      var table = document.getElementById("myTable");
+      var rows = Array.from(table.rows);
+      rows.shift(); // Remove the header row
+
+      rows.sort(function(a, b) {
+        var totalA = parseInt(a.cells[3].innerText);
+        var totalB = parseInt(b.cells[3].innerText);
+        return totalA - totalB;
+      });
+
+      // Rearrange the sorted rows
+      for (var i = 0; i < rows.length; i++) {
+        table.appendChild(rows[i]);
+      }
+    }
+
+    sortTable();
+  </script>
+</body>
+</html>
